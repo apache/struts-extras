@@ -1,5 +1,7 @@
 # The Apache Struts Extras
 
+[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
+
 This a subproject of the [Apache Struts](http://struts.apache.org/) project which provides different plugins,
 mostly focused on fixing (if possibe) vulnerabilities in older versions of the framework.
 

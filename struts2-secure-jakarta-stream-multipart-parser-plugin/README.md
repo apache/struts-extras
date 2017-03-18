@@ -1,5 +1,8 @@
 # Apache Struts 2 Extras - Secure Jakarta Stream Multipart parser plugin
 
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apache.struts/struts2-secure-jakarta-stream-multipart-parser-plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.apache.struts/struts2-secure-jakarta-stream-multipart-parser-plugin/)
+[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
+
 This plugin provides a safe implementation of the Jakarta Stream Multipart parser from the Struts Core. It can be used
 to mitigate vulnerability described in the [S2-045](http://struts.apache.org/docs/s2-045.html) Security Bulletin.
  
