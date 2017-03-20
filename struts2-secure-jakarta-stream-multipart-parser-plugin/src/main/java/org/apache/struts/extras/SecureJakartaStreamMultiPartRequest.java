@@ -91,6 +91,11 @@ public class SecureJakartaStreamMultiPartRequest implements MultiPartRequest {
      */
     private Locale defaultLocale = Locale.ENGLISH;
 
+    public SecureJakartaStreamMultiPartRequest() {
+        LOG.info("This is a secure implementation of the Struts Jakarta Stream Multipart parser, " +
+                "this implementation is safe against vulnerability described in the S2-045/S2-046 Security Bulletins.");
+    }
+
     /**
      * Injects the Struts multiple part maximum size.
      *
