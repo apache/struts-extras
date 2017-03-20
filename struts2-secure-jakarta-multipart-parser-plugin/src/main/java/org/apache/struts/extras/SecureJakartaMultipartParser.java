@@ -35,7 +35,7 @@ public class SecureJakartaMultipartParser extends JakartaMultiPartRequest {
 
     public SecureJakartaMultipartParser() {
         LOG.info("This is a secure implementation of the Struts Jakarta Multipart parser, " +
-                "this implementation is safe against vulnerability described in the S2-045 Security Bulletin.");
+                "this implementation is safe against vulnerability described in the S2-045/S2-046 Security Bulletins.");
     }
 
     @Inject
