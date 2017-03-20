@@ -89,8 +89,4 @@
         </plugins>
     </build>
 
-
-  <scm>
-    <tag>struts2-secure-jakarta-multipart-parser-plugin-1.0</tag>
-  </scm>
 </project>
