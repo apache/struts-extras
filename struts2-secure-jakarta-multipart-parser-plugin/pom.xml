@@ -36,6 +36,31 @@
         This plugin allows to fix a vulnerability S2-045 without a need to migrate to the latest Struts versions
     </description>
 
+    <scm>
+        <connection>scm:git:git://git.apache.org/struts.git</connection>
+        <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/struts.git</developerConnection>
+        <url>http://git.apache.org/struts.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <issueManagement>
+        <system>JIRA</system>
+        <url>https://issues.apache.org/jira/browse/WW</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>Jenkins</system>
+        <url>https://builds.apache.org/hudson/view/S-Z/view/Struts</url>
+        <notifiers>
+            <notifier>
+                <type>mail</type>
+                <configuration>
+                    <address>dev@struts.apache.org</address>
+                </configuration>
+            </notifier>
+        </notifiers>
+    </ciManagement>
+
     <dependencies>
 
         <dependency>
