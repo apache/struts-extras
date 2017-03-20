@@ -23,7 +23,7 @@ If you are using Maven to build your project, please add the following dependenc
 ```xml
 <dependency>
     <groupId>org.apache.struts</groupId>
-    <artifactId>struts2-secure-jakarta--stream-multipart-parser-plugin</artifactId>
+    <artifactId>struts2-secure-jakarta-stream-multipart-parser-plugin</artifactId>
     <version>[VERSION]</version>            
 </dependency>
 ```
