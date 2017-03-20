@@ -28,6 +28,9 @@
         name="secure-jakarta"
         scope="prototype"/>
 
+  <!-- Struts 2.3.12+ -->
   <constant name="struts.multipart.parser" value="secure-jakarta"/>
+  <!-- Struts 2.3.8 -->
+  <constant name="struts.multipart.handler" value="secure-jakarta"/>
 
 </struts>
