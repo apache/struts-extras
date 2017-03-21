@@ -26,7 +26,7 @@
   <bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest"
         class="org.apache.struts.extras.SecureJakartaStreamMultiPartRequest"
         name="secure-jakarta-stream"
-        scope="prototype"/>
+        scope="default"/>
 
   <constant name="struts.multipart.parser" value="secure-jakarta-stream"/>
 
