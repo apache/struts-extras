@@ -10,7 +10,7 @@ You should use this plugin in case you are not able to migrated to the latest St
 
 ## Supported versions
 
-This plugins can be used with the Apache Struts versions 2.5.8 till 2.5.5, if you are running the Apache Struts 2.5.8+
+This plugins can be used with the Apache Struts versions 2.3.8 till 2.5.5, if you are running the Apache Struts 2.5.8+
 you must migrate to the latest version which is [Struts 2.5.10.1](http://struts.apache.org/announce.html#a20170307).
 
 ## How to use it
