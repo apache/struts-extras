@@ -6,7 +6,7 @@
 This plugin provides a safe implementation of the Jakarta Stream Multipart parser from the Struts Core. It can be used
 to mitigate vulnerability described in the [S2-045](http://struts.apache.org/docs/s2-045.html) Security Bulletin.
  
-You should use this plugin in case you are not able to migrated to the latest Struts version.
+You should use this plugin in case you are not able to migrate to the latest Struts version.
 
 ## Supported versions
 
