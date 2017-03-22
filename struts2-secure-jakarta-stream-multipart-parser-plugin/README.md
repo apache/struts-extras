@@ -15,8 +15,29 @@ you must migrate to the latest version which is [Struts 2.5.10.1](http://struts.
 
 ## How to use it
 
-Just drop the jar into `WEB-INF/libs` folder and restart your application, you can use on of the existing PoCs
-to test if everything is ok.
+Just drop the jar into `WEB-INF/libs` folder and add the bellow definition into your `struts.xml`:
+
+- if you are running the Apache Struts 2.3.8 - 2.3.31
+ ```xml
+      <bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest"
+            class="org.apache.struts.extras.SecureJakartaStreamMultiPartRequest"
+            name="secure-jakarta-stream"
+            scope="default"/>
+    
+      <constant name="struts.multipart.parser" value="secure-jakarta-stream"/>
+ ```
+
+- if you are running the Apache Struts 2.5 - .2.5.5
+ ```xml
+      <bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest"
+            class="org.apache.struts.extras.SecureJakartaStreamMultiPartRequest"
+            name="secure-jakarta-stream"
+            scope="prototype"/>
+    
+      <constant name="struts.multipart.parser" value="secure-jakarta-stream"/> 
+ ```
+
+and then restart your application, you can use on of the existing PoCs to test if everything is ok.
 
 If you are using Maven to build your project, please add the following dependency into your pom:
   
@@ -28,7 +49,8 @@ If you are using Maven to build your project, please add the following dependenc
 </dependency>
 ```
 
-If you are not building with Maven or you simply need the Jar to drop it into an existing Struts 2 based application deployment, you can [download it directly from Maven Central](http://search.maven.org/remotecontent?filepath=org/apache/struts/struts2-secure-jakarta-stream-multipart-parser-plugin/1.0/struts2-secure-jakarta-stream-multipart-parser-plugin-1.0.jar).
+If you are not building with Maven or you simply need the Jar to drop it into an existing Struts 2 based application deployment, 
+you can [download it directly from Maven Central](http://search.maven.org/remotecontent?filepath=org/apache/struts/struts2-secure-jakarta-stream-multipart-parser-plugin/1.0/struts2-secure-jakarta-stream-multipart-parser-plugin-1.0.jar).
 
 ## Remarks
 
