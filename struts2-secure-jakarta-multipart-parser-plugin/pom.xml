@@ -28,7 +28,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>struts2-secure-jakarta-multipart-parser-plugin</artifactId>
-    <version>1.1</version>
+    <version>1.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Struts 2.3.8 - 2.5.5 secure Jakarta Multipart parser plugin</name>
 
@@ -40,7 +40,7 @@
         <connection>scm:git:git://git.apache.org/struts-extras.git</connection>
         <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/struts-extras.git</developerConnection>
         <url>http://git.apache.org/struts-extras.git</url>
-        <tag>struts2-secure-jakarta-multipart-parser-plugin-1.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
