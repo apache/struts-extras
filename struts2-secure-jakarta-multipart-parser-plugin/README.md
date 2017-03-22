@@ -37,6 +37,8 @@ Just drop the jar into `WEB-INF/libs` folder and add the bellow definition into 
       <constant name="struts.multipart.parser" value="secure-jakarta"/> 
  ```
 
+and then restart your application, you can use one of the existing PoCs to test if everything is ok.
+
 If you are using Maven to build your project, please add the following dependency into your pom:
   
 ```xml
