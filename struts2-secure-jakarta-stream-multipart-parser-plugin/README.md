@@ -27,7 +27,7 @@ Just drop the jar into `WEB-INF/libs` folder and add the bellow definition into 
       <constant name="struts.multipart.parser" value="secure-jakarta-stream"/>
  ```
 
-- if you are running the Apache Struts 2.5 - .2.5.5
+- if you are running the Apache Struts 2.5 - 2.5.5
  ```xml
       <bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest"
             class="org.apache.struts.extras.SecureJakartaStreamMultiPartRequest"
