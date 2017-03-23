@@ -12,4 +12,4 @@ mostly focused on fixing (if possibe) vulnerabilities in older versions of the f
 
 ## License
 
-Release under Apache License 2.0
+Released under Apache License 2.0
