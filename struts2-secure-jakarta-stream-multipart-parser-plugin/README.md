@@ -50,7 +50,7 @@ If you are using Maven to build your project, please add the following dependenc
 ```
 
 If you are not building with Maven or you simply need the Jar to drop it into an existing Struts 2 based application deployment, 
-you can [download it directly from Maven Central](http://search.maven.org/remotecontent?filepath=org/apache/struts/struts2-secure-jakarta-stream-multipart-parser-plugin/1.0/struts2-secure-jakarta-stream-multipart-parser-plugin-1.0.jar).
+you can [download it directly from Maven Central](http://search.maven.org/remotecontent?filepath=org/apache/struts/struts2-secure-jakarta-stream-multipart-parser-plugin/1.1/struts2-secure-jakarta-stream-multipart-parser-plugin-1.1.jar).
 
 ## Remarks
 
