@@ -45,7 +45,7 @@ If you are using Maven to build your project, please add the following dependenc
 <dependency>
     <groupId>org.apache.struts</groupId>
     <artifactId>struts2-secure-jakarta-stream-multipart-parser-plugin</artifactId>
-    <version>1.0</version>            
+    <version>1.1</version>            
 </dependency>
 ```
 
