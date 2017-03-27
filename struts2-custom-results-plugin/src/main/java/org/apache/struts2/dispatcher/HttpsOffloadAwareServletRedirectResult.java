@@ -42,105 +42,105 @@ import com.opensymphony.xwork2.config.entities.ResultConfig;
 import com.opensymphony.xwork2.inject.Inject;
 
 public class HttpsOffloadAwareServletRedirectResult extends ServletRedirectResult {
-	private static final long serialVersionUID = -5384946213381645549L;
-	private static final Logger LOG = LogManager.getLogger(HttpsOffloadAwareServletRedirectResult.class);
+    private static final long serialVersionUID = -5384946213381645549L;
+    private static final Logger LOG = LogManager.getLogger(HttpsOffloadAwareServletRedirectResult.class);
 
-	private UrlHelper urlHelper;
+    private UrlHelper urlHelper;
 
-	@Inject
-	public void setUrlHelper(UrlHelper urlHelper) {
-		this.urlHelper = urlHelper;
-	}
+    @Inject
+    public void setUrlHelper(UrlHelper urlHelper) {
+        this.urlHelper = urlHelper;
+    }
 
-	/**
-	 * Redirects to the location specified by calling
-	 * {@link HttpServletResponse#sendRedirect(String)}.
-	 * 
-	 * @param finalLocation
-	 *            the location to redirect to.
-	 * @param invocation
-	 *            an encapsulation of the action execution state.
-	 * @throws Exception
-	 *             if an error occurs when redirecting.
-	 */
-	protected void doExecute(String finalLocation, ActionInvocation invocation) throws Exception {
-		ActionContext ctx = invocation.getInvocationContext();
-		HttpServletRequest request = (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
-		HttpServletResponse response = (HttpServletResponse) ctx.get(ServletActionContext.HTTP_RESPONSE);
+    /**
+     * Redirects to the location specified by calling
+     * {@link HttpServletResponse#sendRedirect(String)}.
+     * 
+     * @param finalLocation
+     *            the location to redirect to.
+     * @param invocation
+     *            an encapsulation of the action execution state.
+     * @throws Exception
+     *             if an error occurs when redirecting.
+     */
+    protected void doExecute(String finalLocation, ActionInvocation invocation) throws Exception {
+        ActionContext ctx = invocation.getInvocationContext();
+        HttpServletRequest request = (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
+        HttpServletResponse response = (HttpServletResponse) ctx.get(ServletActionContext.HTTP_RESPONSE);
 
-		if (isPathUrl(finalLocation)) {
-			if (!finalLocation.startsWith("/")) {
-				ActionMapping mapping = actionMapper.getMapping(request,
-						Dispatcher.getInstance().getConfigurationManager());
-				String namespace = null;
-				if (mapping != null) {
-					namespace = mapping.getNamespace();
-				}
+        if (isPathUrl(finalLocation)) {
+            if (!finalLocation.startsWith("/")) {
+                ActionMapping mapping = actionMapper.getMapping(request,
+                        Dispatcher.getInstance().getConfigurationManager());
+                String namespace = null;
+                if (mapping != null) {
+                    namespace = mapping.getNamespace();
+                }
 
-				if ((namespace != null) && (namespace.length() > 0) && (!"/".equals(namespace))) {
-					finalLocation = namespace + "/" + finalLocation;
-				} else {
-					finalLocation = "/" + finalLocation;
-				}
-			}
+                if ((namespace != null) && (namespace.length() > 0) && (!"/".equals(namespace))) {
+                    finalLocation = namespace + "/" + finalLocation;
+                } else {
+                    finalLocation = "/" + finalLocation;
+                }
+            }
 
-			// if the URL's are relative to the servlet context, append the
-			// servlet context path
-			if (prependServletContext && (request.getContextPath() != null)
-					&& (request.getContextPath().length() > 0)) {
-				finalLocation = request.getContextPath() + finalLocation;
-			}
+            // if the URL's are relative to the servlet context, append the
+            // servlet context path
+            if (prependServletContext && (request.getContextPath() != null)
+                    && (request.getContextPath().length() > 0)) {
+                finalLocation = request.getContextPath() + finalLocation;
+            }
 
-			finalLocation = fixSchemeIfNeeded(finalLocation, request);
-		}
-		ResultConfig resultConfig = invocation.getProxy().getConfig().getResults().get(invocation.getResultCode());
-		if (resultConfig != null) {
-			Map<String, String> resultConfigParams = resultConfig.getParams();
+            finalLocation = fixSchemeIfNeeded(finalLocation, request);
+        }
+        ResultConfig resultConfig = invocation.getProxy().getConfig().getResults().get(invocation.getResultCode());
+        if (resultConfig != null) {
+            Map<String, String> resultConfigParams = resultConfig.getParams();
 
-			List<String> prohibitedResultParams = getProhibitedResultParams();
-			for (Map.Entry<String, String> e : resultConfigParams.entrySet()) {
-				if (!prohibitedResultParams.contains(e.getKey())) {
-					Collection<String> values = conditionalParseCollection(e.getValue(), invocation,
-							suppressEmptyParameters);
-					if (!suppressEmptyParameters || !values.isEmpty()) {
-						requestParameters.put(e.getKey(), values);
-					}
-				}
-			}
-		}
+            List<String> prohibitedResultParams = getProhibitedResultParams();
+            for (Map.Entry<String, String> e : resultConfigParams.entrySet()) {
+                if (!prohibitedResultParams.contains(e.getKey())) {
+                    Collection<String> values = conditionalParseCollection(e.getValue(), invocation,
+                            suppressEmptyParameters);
+                    if (!suppressEmptyParameters || !values.isEmpty()) {
+                        requestParameters.put(e.getKey(), values);
+                    }
+                }
+            }
+        }
 
-		StringBuilder tmpLocation = new StringBuilder(finalLocation);
-		urlHelper.buildParametersString(requestParameters, tmpLocation, "&");
+        StringBuilder tmpLocation = new StringBuilder(finalLocation);
+        urlHelper.buildParametersString(requestParameters, tmpLocation, "&");
 
-		// add the anchor
-		if (anchor != null) {
-			tmpLocation.append('#').append(anchor);
-		}
+        // add the anchor
+        if (anchor != null) {
+            tmpLocation.append('#').append(anchor);
+        }
 
-		finalLocation = response.encodeRedirectURL(tmpLocation.toString());
+        finalLocation = response.encodeRedirectURL(tmpLocation.toString());
 
-		LOG.debug("Redirecting to finalLocation: {}", finalLocation);
+        LOG.debug("Redirecting to finalLocation: {}", finalLocation);
 
-		sendRedirect(response, finalLocation);
-	}
+        sendRedirect(response, finalLocation);
+    }
 
-	private String fixSchemeIfNeeded(String location, HttpServletRequest request) {
-		if ("https".equals(request.getHeader("X-Forwarded-Proto"))) {
-			LOG.debug("https offloading happened, fixing redirectlocation");
-			StringBuilder fixedLocation = new StringBuilder();
-			fixedLocation.append("https");
-			fixedLocation.append("://");
-			fixedLocation.append(request.getServerName());
-			if (request.getServerPort() != 80) {
-				fixedLocation.append(':');
-				fixedLocation.append(request.getServerPort());
-			}
-			fixedLocation.append(location);
+    private String fixSchemeIfNeeded(String location, HttpServletRequest request) {
+        if ("https".equals(request.getHeader("X-Forwarded-Proto"))) {
+            LOG.debug("https offloading happened, fixing redirectlocation");
+            StringBuilder fixedLocation = new StringBuilder();
+            fixedLocation.append("https");
+            fixedLocation.append("://");
+            fixedLocation.append(request.getServerName());
+            if (request.getServerPort() != 80) {
+                fixedLocation.append(':');
+                fixedLocation.append(request.getServerPort());
+            }
+            fixedLocation.append(location);
 
-			return fixedLocation.toString();
-		} else {
-			return location;
-		}
-	}
+            return fixedLocation.toString();
+        } else {
+            return location;
+        }
+    }
 
 }
