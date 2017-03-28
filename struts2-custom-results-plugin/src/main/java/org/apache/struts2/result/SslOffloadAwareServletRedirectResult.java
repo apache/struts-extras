@@ -157,7 +157,11 @@ public class SslOffloadAwareServletRedirectResult extends ServletRedirectResult 
     }
 
     protected boolean shouldFixScheme(HttpServletRequest request) {
-        return "https".equals(request.getHeader("X-Forwarded-Proto")) || hasForwardedHeaderWithProtoParamHttps(request);
+        return hasXForwardedProtoHttps(request) || hasForwardedHeaderWithProtoParamHttps(request);
+    }
+
+    protected boolean hasXForwardedProtoHttps(HttpServletRequest request) {
+        return "https".equals(request.getHeader("X-Forwarded-Proto"));
     }
 
     protected boolean hasForwardedHeaderWithProtoParamHttps(HttpServletRequest request) {
