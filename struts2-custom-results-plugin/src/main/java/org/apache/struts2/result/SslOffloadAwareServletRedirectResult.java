@@ -160,7 +160,7 @@ public class SslOffloadAwareServletRedirectResult extends ServletRedirectResult 
         return "https".equals(request.getHeader("X-Forwarded-Proto")) || hasForwardedHeaderWithProtoParamHttps(request);
     }
 
-    private boolean hasForwardedHeaderWithProtoParamHttps(HttpServletRequest request) {
+    protected boolean hasForwardedHeaderWithProtoParamHttps(HttpServletRequest request) {
         Enumeration<String> forwardedHeaders = request.getHeaders("Forwarded");
 
         if (forwardedHeaders == null) {
