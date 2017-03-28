@@ -52,6 +52,18 @@ public class HttpsOffloadAwareServletRedirectResult extends ServletRedirectResul
         this.urlHelper = urlHelper;
     }
 
+    public HttpsOffloadAwareServletRedirectResult() {
+        super();
+    }
+
+    public HttpsOffloadAwareServletRedirectResult(String location) {
+        this(location, null);
+    }
+
+    public HttpsOffloadAwareServletRedirectResult(String location, String anchor) {
+        super(location, anchor);
+    }
+
     /**
      * Redirects to the location specified by calling
      * {@link HttpServletResponse#sendRedirect(String)}.
