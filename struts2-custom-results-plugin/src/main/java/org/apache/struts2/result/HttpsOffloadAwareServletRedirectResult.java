@@ -22,8 +22,11 @@
 package org.apache.struts2.result;
 
 import java.util.Collection;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,6 +47,7 @@ import com.opensymphony.xwork2.inject.Inject;
 public class HttpsOffloadAwareServletRedirectResult extends ServletRedirectResult {
     private static final long serialVersionUID = -5384946213381645549L;
     private static final Logger LOG = LogManager.getLogger(HttpsOffloadAwareServletRedirectResult.class);
+    private static final Pattern FORWARDED_PROTO_PARAM_HTTPS = Pattern.compile("[^;]proto=https[$;]");
 
     private UrlHelper urlHelper;
 
@@ -155,7 +159,30 @@ public class HttpsOffloadAwareServletRedirectResult extends ServletRedirectResul
     }
 
     protected boolean shouldFixScheme(HttpServletRequest request) {
-        return "https".equals(request.getHeader("X-Forwarded-Proto"));
+        return "https".equals(request.getHeader("X-Forwarded-Proto")) || hasForwardedHeaderWithProtoParamHttps(request);
+    }
+
+    private boolean hasForwardedHeaderWithProtoParamHttps(HttpServletRequest request) {
+        Enumeration<String> forwardedHeaders = request.getHeaders("Forwarded");
+
+        if (forwardedHeaders == null) {
+            return false;
+        }
+
+        while (forwardedHeaders.hasMoreElements()) {
+            String forwardedHeader = forwardedHeaders.nextElement();
+            String[] forwardedHeaderElements = forwardedHeader.split(",");
+            
+            for (String forwardedHeaderElement : forwardedHeaderElements) {
+                Matcher matcher = FORWARDED_PROTO_PARAM_HTTPS.matcher(forwardedHeaderElement.trim());
+
+                if (matcher.matches()) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
 }
