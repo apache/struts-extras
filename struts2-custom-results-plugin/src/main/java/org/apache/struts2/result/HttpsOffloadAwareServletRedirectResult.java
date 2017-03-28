@@ -19,7 +19,7 @@
  * under the License.
  */
 
-package org.apache.struts2.dispatcher;
+package org.apache.struts2.result;
 
 import java.util.Collection;
 import java.util.List;
@@ -31,9 +31,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.dispatcher.Dispatcher;
-import org.apache.struts2.dispatcher.ServletRedirectResult;
 import org.apache.struts2.dispatcher.mapper.ActionMapping;
+import org.apache.struts2.dispatcher.Dispatcher;
+import org.apache.struts2.result.ServletRedirectResult;
 import org.apache.struts2.views.util.UrlHelper;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -70,8 +70,7 @@ public class HttpsOffloadAwareServletRedirectResult extends ServletRedirectResul
 
         if (isPathUrl(finalLocation)) {
             if (!finalLocation.startsWith("/")) {
-                ActionMapping mapping = actionMapper.getMapping(request,
-                        Dispatcher.getInstance().getConfigurationManager());
+                ActionMapping mapping = actionMapper.getMapping(request, Dispatcher.getInstance().getConfigurationManager());
                 String namespace = null;
                 if (mapping != null) {
                     namespace = mapping.getNamespace();
