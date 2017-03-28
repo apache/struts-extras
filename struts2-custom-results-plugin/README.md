@@ -40,3 +40,42 @@ Only thing this package does is defining the result types so that they can be us
 
 Merely combines the `struts-default` package and the `ssl-offload` package.
 
+#### How to use
+
+The requirement for using these Result Types is that they are defined.
+
+This could be done in a couple ways:
+
+*Defining the types manualy in your own package*
+
+The Result Types can be registered in your own package as follows:
+
+```xml
+    <package name="myPackage" extends="struts-default">
+        <result-types>
+            <result-type name="sslOffloadRedirect" class="org.apache.struts2.result.SslOffloadAwareServletRedirectResult"/>
+            <result-type name="sslOffloadRedirectAction" class="org.apache.struts2.result.SslOffloadAwareServletActionRedirectResult"/>
+        </result-types>
+        ...
+    </package>
+```
+
+*Using the ssl-offload package as a parent*
+
+You can also just specify the `ssl-offload` package as a parent your package extends from.
+
+```xml
+    <package name="myPackage" extends="struts-default, ssl-offload">
+        ...
+    </package>
+```
+
+*Using the ssl-offload-default as a parent*
+
+You can also just specify the `ssl-offload-default` package as a parent your package extends from. This should have the same effect as extending both `struts-default` and `ssl-offload`
+
+```xml
+    <package name="myPackage" extends="ssl-offload-default">
+        ...
+    </package>
+```
