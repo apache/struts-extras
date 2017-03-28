@@ -41,7 +41,7 @@ import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.config.entities.ResultConfig;
 import com.opensymphony.xwork2.inject.Inject;
 
-public class HttpsOffloadAwareServletActionRedirectResult extends HttpsOffloadAwareServletRedirectResult {
+public class SslOffloadAwareServletActionRedirectResult extends SslOffloadAwareServletRedirectResult {
     /* The default parameter */
     public static final String DEFAULT_PARAM = "actionName";
 
@@ -49,21 +49,21 @@ public class HttpsOffloadAwareServletActionRedirectResult extends HttpsOffloadAw
     protected String namespace;
     protected String method;
 
-    public HttpsOffloadAwareServletActionRedirectResult() {}
+    public SslOffloadAwareServletActionRedirectResult() {}
 
-    public HttpsOffloadAwareServletActionRedirectResult(String actionName) {
+    public SslOffloadAwareServletActionRedirectResult(String actionName) {
         this(null, actionName, null, null);
     }
 
-    public HttpsOffloadAwareServletActionRedirectResult(String actionName, String method) {
+    public SslOffloadAwareServletActionRedirectResult(String actionName, String method) {
         this(null, actionName, method, null);
     }
 
-    public HttpsOffloadAwareServletActionRedirectResult(String namespace, String actionName, String method) {
+    public SslOffloadAwareServletActionRedirectResult(String namespace, String actionName, String method) {
         this(namespace, actionName, method, null);
     }
 
-    public HttpsOffloadAwareServletActionRedirectResult(String namespace, String actionName, String method, String anchor) {
+    public SslOffloadAwareServletActionRedirectResult(String namespace, String actionName, String method, String anchor) {
         super(null, anchor);
         this.namespace = namespace;
         this.actionName = actionName;

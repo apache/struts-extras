@@ -44,9 +44,9 @@ import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.config.entities.ResultConfig;
 import com.opensymphony.xwork2.inject.Inject;
 
-public class HttpsOffloadAwareServletRedirectResult extends ServletRedirectResult {
+public class SslOffloadAwareServletRedirectResult extends ServletRedirectResult {
     private static final long serialVersionUID = -5384946213381645549L;
-    private static final Logger LOG = LogManager.getLogger(HttpsOffloadAwareServletRedirectResult.class);
+    private static final Logger LOG = LogManager.getLogger(SslOffloadAwareServletRedirectResult.class);
     private static final Pattern FORWARDED_PROTO_PARAM_HTTPS = Pattern.compile("[^;]proto=https[$;]");
 
     private UrlHelper urlHelper;
@@ -56,15 +56,15 @@ public class HttpsOffloadAwareServletRedirectResult extends ServletRedirectResul
         this.urlHelper = urlHelper;
     }
 
-    public HttpsOffloadAwareServletRedirectResult() {
+    public SslOffloadAwareServletRedirectResult() {
         super();
     }
 
-    public HttpsOffloadAwareServletRedirectResult(String location) {
+    public SslOffloadAwareServletRedirectResult(String location) {
         this(location, null);
     }
 
-    public HttpsOffloadAwareServletRedirectResult(String location, String anchor) {
+    public SslOffloadAwareServletRedirectResult(String location, String anchor) {
         super(location, anchor);
     }
 
