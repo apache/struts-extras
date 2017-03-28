@@ -9,6 +9,7 @@ mostly focused on fixing (if possibe) vulnerabilities in older versions of the f
 
 - [Apache Struts 2 Secure Jakarta Multipart parser plugin](struts2-secure-jakarta-multipart-parser-plugin/README.md)
 - [Apache Struts 2 Secure Jakarta Stream Multipart parser plugin](struts2-secure-jakarta-stream-multipart-parser-plugin/README.md)
+- [Apache Struts 2 Custom results plugin](struts2-custom-results-plugin/README.md)
 
 ## License
 
