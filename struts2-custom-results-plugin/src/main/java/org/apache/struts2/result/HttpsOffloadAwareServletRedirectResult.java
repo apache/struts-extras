@@ -136,7 +136,7 @@ public class HttpsOffloadAwareServletRedirectResult extends ServletRedirectResul
     }
 
     protected String fixSchemeIfNeeded(String location, HttpServletRequest request) {
-        if ("https".equals(request.getHeader("X-Forwarded-Proto"))) {
+        if (shouldFixScheme(request)) {
             LOG.debug("https offloading happened, fixing redirectlocation");
             StringBuilder fixedLocation = new StringBuilder();
             fixedLocation.append("https");
@@ -152,6 +152,10 @@ public class HttpsOffloadAwareServletRedirectResult extends ServletRedirectResul
         } else {
             return location;
         }
+    }
+
+    protected boolean shouldFixScheme(HttpServletRequest request) {
+        return "https".equals(request.getHeader("X-Forwarded-Proto"));
     }
 
 }
