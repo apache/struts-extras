@@ -24,6 +24,9 @@ Just drop the jar into `WEB-INF/libs` folder and add the bellow definition into 
             name="secure-jakarta-stream"
             scope="default"/>
     
+      <!-- when running Struts 2.3.8 use this constant name -->
+      <constant name="struts.multipart.handler" value="secure-jakarta-stream"/>
+      <!-- when running Struts 2.3.9 - 2.3.31 use this constant name -->
       <constant name="struts.multipart.parser" value="secure-jakarta-stream"/>
  ```
 
