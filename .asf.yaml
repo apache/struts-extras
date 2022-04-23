@@ -1,0 +1,4 @@
+# Documentation https://s.apache.org/asfyaml
+github:
+  dependabot_alerts:  false
+  dependabot_updates: false
