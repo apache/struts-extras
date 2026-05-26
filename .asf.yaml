@@ -1,4 +1,18 @@
 # Documentation https://s.apache.org/asfyaml
 github:
-  dependabot_alerts:  false
+  dependabot_alerts: false
   dependabot_updates: false
+  del_branch_on_merge: true
+  rulesets:
+    - name: "Default Branch Protection"
+      type: branch
+      branches:
+        includes:
+          - "~DEFAULT_BRANCH"
+          - "release/*"
+        excludes: []
+      bypass_teams:
+        - "root"
+        - "struts-committers"
+      restrict_deletion: true
+      restrict_force_push: true
